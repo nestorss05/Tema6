@@ -10,7 +10,7 @@ public class HoraExacta extends Hora {
 	/**
 	 * int segundos: segundos de la fecha
 	 */
-	int segundos;
+	private int segundos;
 
 	/**
 	 * Constructor con parametros
@@ -20,10 +20,15 @@ public class HoraExacta extends Hora {
 	 * @param segundos segundos de la fecha
 	 */
 	public HoraExacta(int hora, int minuto, int segundos) {
+		
+		// Asigna las horas y los minutos
 		super(hora, minuto);
+		
+		// If: Se guardaran los segundos si estan entre 0 y 59
 		if (segundos >= 0 && segundos < 59) {
 			this.segundos = segundos;
-		}
+		} // Fin If
+		
 	}
 
 	/**
@@ -37,13 +42,13 @@ public class HoraExacta extends Hora {
 		// boolean establecido: booleana que indica si se han establecido los segundos o
 		// no
 		boolean establecido = false;
-		
+
 		// If: para establecer el valor, debe estar entre 0 y 59
 		if (valor >= 0 && valor < 60) {
 			establecido = true;
 			segundos = valor;
 		} // Fin If
-		
+
 		// Devuelve establecido al main
 		return establecido;
 	}
@@ -58,29 +63,13 @@ public class HoraExacta extends Hora {
 
 		if (segundos == 60) {
 
-			// Incrementa el minuto en 1
-			minuto++;
+			// Se incrementara un minuto
+			super.inc();
 
 			// Segundos se reestablecera en 0
 			segundos = 0;
 
-			// If: si el minuto es 60:
-			if (minuto == 60) {
-
-				// Se incrementara hora en 1
-				hora++;
-
-				// Minuto se reestablecera a 0
-				minuto = 0;
-
-				// If: si hora es 24:
-				if (hora == 24) {
-					hora = 0;
-				} // Fin If
-
-			} // Fin If
-
-		}
+		} // Fin If
 
 	}
 
@@ -91,36 +80,23 @@ public class HoraExacta extends Hora {
 	 */
 	@Override
 	public String toString() {
-		
+
 		// String texto: texto final a devolver
-		String texto = "";
-		
-		// String horaString: hora pasada a string
-		String horaString;
-		String minutoString;
-		String segundoString;
-		if (hora < 10) {
-			horaString = "0" + hora;
-		} else {
-			horaString = "" + hora;
-		}
-		if (minuto < 10) {
-			minutoString = "0" + minuto;
-		} else {
-			minutoString = "" + minuto;
-		}
+		String texto;
+
+		// String textoOG: texto de la clase Hora
+		String textoOG = super.toString();
+
+		// If-Else: revisa si segundos es menor que 10 y une todo hacia texto
 		if (segundos < 10) {
-			segundoString = "0" + segundos;
+			texto = textoOG + ":0" + segundos;
 		} else {
-			segundoString = "" + segundos;
-		}
-		
-		// Une todo hacia texto
-		texto = horaString + ":" + minutoString + ":" + segundoString;
-		
+			texto = textoOG + ":" + segundos;
+		} // Fin If-Else
+
 		// Devuelve texto
 		return texto;
-		
+
 	}
 
 }

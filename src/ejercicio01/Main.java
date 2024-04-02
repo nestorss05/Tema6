@@ -8,8 +8,8 @@ public class Main {
 	// Inicia el Scanner
 	private static Scanner sc = new Scanner(System.in);
 
-	// Hora hora
-	private static Hora hora = new Hora(0, 0);
+	// HoraExacta horaexct: variable para enlazar a HoraExacta
+	private static HoraExacta horaexct = new HoraExacta(0, 0, 0);
 
 	// int valor: valor a establecer
 	private static int valor;
@@ -39,10 +39,11 @@ public class Main {
 	 * Funcion mostrarMenu: muestra el menu
 	 */
 	private static void mostrarMenu() {
-		System.out.println("1. Mostrar hora");
-		System.out.println("2. Incrementar minuto en 1");
-		System.out.println("3. Establecer minutos");
-		System.out.println("4. Establecer horas");
+		System.out.println("1. Mostrar hora exacta");
+		System.out.println("2. Incrementar segundos en 1");
+		System.out.println("3. Establecer horas");
+		System.out.println("4. Establecer minutos");
+		System.out.println("5. Establecer segundos");
 		System.out.println("0. Salir");
 		System.out.println("Introduce una opcion");
 	}
@@ -85,28 +86,28 @@ public class Main {
 		// Case 0: sal del programa
 		case 0 -> {
 			System.out.println("Saliendo del programa...");
-		}
+		} // Fin Case 0
 
 		// Case 1: mostrar hora
 		case 1 -> {
-			System.out.println(hora.toString());
-		}
+			System.out.println(horaexct.toString());
+		} // Fin Case 1
 
-		// Case 2: incrementar minuto en 1
+		// Case 2: incrementar segundos en 1
 		case 2 -> {
-			hora.inc();
-		}
+			horaexct.inc();
+		} // Fin Case 2
 
-		// Case 3: establece los minutos
+		// Case 3: establece horas
 		case 3 -> {
 
 			// Pide al usuario un valor
 			valor = eligeValor();
 
 			// Establece los minutos
-			hora.setMinutos(valor);
+			horaexct.setHoras(valor);
 
-		}
+		} // Fin Case 3
 
 		// Case 4: establece los minutos
 		case 4 -> {
@@ -115,19 +116,35 @@ public class Main {
 			valor = eligeValor();
 
 			// Establece los minutos
-			hora.setHoras(valor);
+			horaexct.setMinutos(valor);
 
-		}
+		} // Fin Case 4
+
+		// Case 5: establecer segundos
+		case 5 -> {
+
+			// Pide al usuario un valor
+			valor = eligeValor();
+
+			// Establece los minutos
+			horaexct.setSegundos(valor);
+
+		} // Fin Case 5
 
 		// Default: opcion incorrecta
 		default -> {
 			System.out.println("ERROR: opcion invalida");
-		}
+		} // Fin Default
 
 		} // Fin Switch
 
 	}
 
+	/**
+	 * Funcion eligeValor: pide al usuario un valor en concreto
+	 * 
+	 * @return horas / minutos / segundos
+	 */
 	private static int eligeValor() {
 
 		// int valor: valor a elegir
