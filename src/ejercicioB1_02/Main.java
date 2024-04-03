@@ -1,4 +1,4 @@
-package ejerciciob1_02;
+package ejercicioB1_02;
 
 public class Main {
 

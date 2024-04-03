@@ -1,4 +1,4 @@
-package ejerciciob1_03;
+package ejercicioB1_03;
 
 /**
  * Clase Perecedero
