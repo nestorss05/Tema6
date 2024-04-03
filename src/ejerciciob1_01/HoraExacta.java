@@ -1,4 +1,4 @@
-package ejercicio01;
+package ejerciciob1_01;
 
 /**
  * Clase HoraExacta

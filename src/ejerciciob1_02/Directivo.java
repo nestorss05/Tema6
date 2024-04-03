@@ -1,18 +1,18 @@
-package ejercicio02;
+package ejerciciob1_02;
 
 /**
- * Clase Operario
+ * Clase Directivo
  * 
  * @author Nestor Sanchez
  */
-public class Operario extends Empleado {
+public class Directivo extends Empleado {
 
 	/**
 	 * Constructor con parametros
 	 * 
 	 * @param nombre nombre del trabajador
 	 */
-	public Operario(String nombre) {
+	public Directivo(String nombre) {
 		super(nombre);
 	}
 
@@ -25,11 +25,12 @@ public class Operario extends Empleado {
 		String frase;
 
 		// La frase consistira del toString de empleado, seguido de una fecha y la
-		// palabra Operario
-		frase = super.toString() + " -> Operario";
+		// palabra Directivo
+		frase = super.toString() + " -> Directivo";
 
 		// Devuelve la frase
 		return frase;
+
 	}
 
 }

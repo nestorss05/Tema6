@@ -1,4 +1,4 @@
-package ejercicio02;
+package ejerciciob1_02;
 
 /**
  * Clase Oficial

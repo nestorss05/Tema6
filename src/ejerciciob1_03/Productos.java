@@ -1,4 +1,4 @@
-package ejercicio03;
+package ejerciciob1_03;
 
 /**
  * Clase Productos
