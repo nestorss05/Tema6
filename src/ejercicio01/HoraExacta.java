@@ -25,7 +25,7 @@ public class HoraExacta extends Hora {
 		super(hora, minuto);
 		
 		// If: Se guardaran los segundos si estan entre 0 y 59
-		if (segundos >= 0 && segundos < 59) {
+		if (segundos >= 0 && segundos <= 59) {
 			this.segundos = segundos;
 		} // Fin If
 		

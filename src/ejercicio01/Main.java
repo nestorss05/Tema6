@@ -90,7 +90,7 @@ public class Main {
 
 		// Case 1: mostrar hora
 		case 1 -> {
-			System.out.println(horaexct.toString());
+			System.out.println(horaexct);
 		} // Fin Case 1
 
 		// Case 2: incrementar segundos en 1
