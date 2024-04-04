@@ -10,7 +10,7 @@ public class Productos {
 	/**
 	 * String nombre: nombre del producto
 	 */
-	protected String nombre;
+	protected String nombre = "";
 
 	/**
 	 * double precio: precio del producto
@@ -52,7 +52,9 @@ public class Productos {
 	 * @param nombre nombre del producto
 	 */
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		if (nombre != null && !nombre.equals("")) {
+			this.nombre = nombre;
+		}
 	}
 
 	/**
@@ -70,7 +72,9 @@ public class Productos {
 	 * @param precio precio del producto
 	 */
 	public void setPrecio(int precio) {
-		this.precio = precio;
+		if (precio >= 0) {
+			this.precio = precio;
+		}
 	}
 
 	/**

@@ -46,24 +46,9 @@ public class NoPerecedero extends Productos {
 	 * @param diasACaducar dias que le faltan al producto para caducar
 	 */
 	public void setDiasACaducar(String tipo) {
-		this.tipo = tipo;
-	}
-
-	/**
-	 * toString: incluye la informacion del producto a mostar por pantalla
-	 */
-	@Override
-	public String toString() {
-
-		// String texto: texto a pasar al main
-		String texto;
-
-		// texto sera el toString de la clase productos incluyendo su tipo
-		texto = super.toString() + " | Tipo del producto: " + tipo;
-
-		// Devuelve texto
-		return texto;
-
+		if (tipo != null && !tipo.equals("")) {
+			this.tipo = tipo;
+		}
 	}
 
 	/**

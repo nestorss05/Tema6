@@ -46,7 +46,9 @@ public class Perecedero extends Productos {
 	 * @param diasACaducar dias que le faltan al producto para caducar
 	 */
 	public void setDiasACaducar(int diasACaducar) {
-		this.diasACaducar = diasACaducar;
+		if (diasACaducar >= 0) {
+			this.diasACaducar = diasACaducar;
+		}
 	}
 
 	/**
@@ -88,16 +90,19 @@ public class Perecedero extends Productos {
 		// Case 1: 75% de descuento
 		case 1 -> {
 			precioFinal = precioFinal / 4;
+			break;
 		} // Fin Case 1
 
 		// Case 2: ~67% de descuento
 		case 2 -> {
 			precioFinal = precioFinal / 3;
+			break;
 		} // Fin Case 2
  
 		// Case 3: 50% de descuento
 		case 3 -> {
 			precioFinal = precioFinal / 2;
+			break;
 		} // Fin Case 3
 
 		} // Fin Switch
