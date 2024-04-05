@@ -46,7 +46,7 @@ public class Television extends Electrodomestico {
 	 * @param sintonizadorTDT booleana que indica si la television transmite en
 	 *                        digital
 	 */
-	public Television(double precioBase, NombreColor color, ConsumoEnergetico consumo, int peso, int resolucion,
+	public Television(double precioBase, String color, char consumo, int peso, int resolucion,
 			boolean sintonizadorTDT) {
 		super(precioBase, color, consumo, peso);
 		if (resolucion > 0) {
@@ -75,27 +75,22 @@ public class Television extends Electrodomestico {
 
 	/**
 	 * Funcion precioFinal: calcula el precio final del electrodomestico
-	 * 
-	 * @return precio final del electrodomestico
 	 */
 	@Override
-	public double precioFinal() {
+	public void precioFinal() {
 
-		// double precioFinal: precio final del producto
-		double precioFinal = super.precioFinal();
+		// Calcula el precio final sin los añadidos
+		super.precioFinal();
 
 		// If 1: si la television es de mas de 40 pulgadas, el precio subira un 30%
 		if (resolucion > 40) {
-			precioFinal *= 1.30;
+			precioBase *= 1.30;
 		} // Fin If 1
 
 		// If 2: si la television es digital, el precio aumentara en 50€
 		if (sintonizadorTDT) {
-			precioFinal += 50;
+			precioBase += 50;
 		} // Fin If 2
-
-		// Devuelve precioFinal
-		return precioFinal;
 
 	}
 

@@ -31,7 +31,7 @@ public class Electrodomestico {
 	 * Constructor sin parametros
 	 */
 	public Electrodomestico() {
-		super();
+
 	}
 
 	/**
@@ -57,19 +57,20 @@ public class Electrodomestico {
 	 * @param consumo    consumo energetico del electrodomestico
 	 * @param peso       peso del electrodomestico
 	 */
-	public Electrodomestico(double precioBase, NombreColor color, ConsumoEnergetico consumo, int peso) {
+	public Electrodomestico(double precioBase, String color, char consumo, int peso) {
 		if (precioBase >= 0) {
 			this.precioBase = precioBase;
-		}
-		if (color != null) {
-			this.color = color;
-		}
-		if (consumo != null) {
-			this.consumo = consumo;
 		}
 		if (peso >= 0) {
 			this.peso = peso;
 		}
+
+		// Comprueba el consumo energetico
+		comprobarConsumoEnergetico(consumo);
+
+		// Comprueba el color
+		comprobarColor(color);
+
 	}
 
 	/**
@@ -86,8 +87,8 @@ public class Electrodomestico {
 	 * 
 	 * @return color del electrodomestico
 	 */
-	public NombreColor getColor() {
-		return color;
+	public String getColor() {
+		return String.valueOf(this.color);
 	}
 
 	/**
@@ -95,8 +96,8 @@ public class Electrodomestico {
 	 * 
 	 * @return consumo energetico del electrodomestico
 	 */
-	public ConsumoEnergetico getConsumoEnergetico() {
-		return consumo;
+	public char getConsumoEnergetico() {
+		return String.valueOf(this.consumo).charAt(0);
 	}
 
 	/**
@@ -113,56 +114,24 @@ public class Electrodomestico {
 	 * energetico del electrodomestico
 	 * 
 	 * @param letra letra que corresponde a un nivel de consumo energetico
-	 * @return nivel de consumo energetico
 	 */
-	private char comprobarConsumoEnergetico(char letra) {
-
-		// char letraFinal: letra a asignar en cuanto a consumo energetico
-		char letraFinal;
+	private void comprobarConsumoEnergetico(char letra) {
 
 		// Switch: por cada respuesta, asigna una letra en concreto
 		switch (letra) {
 
 		// Case A
-		case 'A' -> {
-			letraFinal = 'A';
-			precioBase = 100;
+		case 'A', 'B', 'C', 'D', 'E', 'F' -> {
+			this.consumo = ConsumoEnergetico.valueOf(String.valueOf(letra));
+			break;
 		} // Fin Case A
-
-		// Case B
-		case 'B' -> {
-			letraFinal = 'B';
-			precioBase = 80;
-		} // Fin Case B
-
-		// Case C
-		case 'C' -> {
-			letraFinal = 'C';
-			precioBase = 60;
-		} // Fin Case C
-
-		// Case D
-		case 'D' -> {
-			letraFinal = 'D';
-			precioBase = 50;
-		} // Fin Case D
-
-		// Case E
-		case 'E' -> {
-			letraFinal = 'E';
-			precioBase = 30;
-		} // Fin Case E
 
 		// Default
 		default -> {
-			letraFinal = 'F';
-			precioBase = 10;
+			break;
 		} // Fin Default
 
 		} // Fin Switch
-
-		// Devuelve letraFinal
-		return letraFinal;
 
 	}
 
@@ -171,85 +140,85 @@ public class Electrodomestico {
 	 * electrodomestico
 	 * 
 	 * @param color color del electrodomestico
-	 * @return color del electrodomestico
 	 */
-	private String comprobarColor(String color) {
-
-		// String colorFinal: color final del electrodomestico
-		String colorFinal = "";
+	private void comprobarColor(String color) {
 
 		// Switch: por cada respuesta, asigna un color en concreto
 		switch (color) {
 
-		// Case negro
-		case "negro" -> {
-			colorFinal = "negro";
-		} // Fin Case negro
+		// Case de color acertaoo
+		case "blanco", "negro", "rojo", "azul", "gris" -> {
+			this.color = NombreColor.valueOf(color);
+			break;
+		} // Fin Case de color acertado
 
-		// Case rojo
-		case "rojo" -> {
-			colorFinal = "rojo";
-		} // Fin Case rojo
-
-		// Case azul
-		case "azul" -> {
-			colorFinal = "azul";
-		} // Fin Case azul
-
-		// Case gris
-		case "gris" -> {
-			colorFinal = "gris";
-		} // Fin Case gris
-
-		// Default: color blanco
+		// Default: color nulo
 		default -> {
-			colorFinal = "blanco";
+			break;
 		} // Fin default
 
 		} // Fin Switch
-
-		// Devuelve colorFinal
-		return colorFinal;
 
 	}
 
 	/**
 	 * Funcion precioFinal: calcula el precio final del electrodomestico
-	 * 
-	 * @return precio final del electrodomestico
 	 */
-	public double precioFinal() {
+	public void precioFinal() {
 
-		// String nivelString: enum consumo pasado a String
-		String nivelString = consumo.toString();
-		
-		// String colorString: enum color pasado a String
-		String colorString = color.toString();
-		
-		// Comprueba el consumo energetico pasando nivelString a char
-		comprobarConsumoEnergetico(nivelString.charAt(0));
-		
-		// Comprueba el color del electrodomestico
-		comprobarColor(colorString);
+		// Switch: se aumentara el precio base segun su nivel de consumo energetico
+		switch (consumo) {
 
-		// double precioFinal: precio final del producto
-		double precioFinal;
+		// Case A
+		case A -> {
+			precioBase += 100;
+			break;
+		} // Fin Case A
+
+		// Case B
+		case B -> {
+			precioBase += 80;
+			break;
+		} // Fin Case B
+
+		// Case C
+		case C -> {
+			precioBase += 60;
+			break;
+		} // Fin Case C
+
+		// Case D
+		case D -> {
+			precioBase += 50;
+			break;
+		} // Fin Case D
+
+		// Case E
+		case E -> {
+			precioBase += 30;
+			break;
+		} // Fin Case E
+
+		// Case F
+		case F -> {
+			precioBase += 10;
+			break;
+		} // Fin Case F
+
+		} // Fin Switch
 
 		// If-Else anidados: debido a que seria muy largo poner una gran cantidad de
 		// cases en un switch, he ido analizando mediante If-Else desde el peso mas
 		// pequeño al mas grande, y asi asignar el valor del precio final
-		if (peso <= 19) {
-			precioFinal = precioBase + 10;
-		} else if (peso <= 49) {
-			precioFinal = precioBase + 50;
-		} else if (peso <= 79) {
-			precioFinal = precioBase + 80;
+		if (peso >= 0 && peso <= 19) {
+			precioBase += 10;
+		} else if (peso >= 20 && peso <= 49) {
+			precioBase += 50;
+		} else if (peso >= 50 && peso <= 79) {
+			precioBase += 80;
 		} else {
-			precioFinal = precioBase + 100;
-		}
-
-		// Devuelve precioFinal
-		return precioFinal;
+			precioBase += 100;
+		} // Fin If-Else anidados
 
 	}
 

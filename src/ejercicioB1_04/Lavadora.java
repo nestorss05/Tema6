@@ -38,7 +38,7 @@ public class Lavadora extends Electrodomestico {
 	 * @param peso       peso del electrodomestico
 	 * @param carga      carga que soporta la lavadora
 	 */
-	public Lavadora(double precioBase, NombreColor color, ConsumoEnergetico consumo, int peso, int carga) {
+	public Lavadora(double precioBase, String color, char consumo, int peso, int carga) {
 		super(precioBase, color, consumo, peso);
 		if (carga > 0) {
 			this.carga = carga;
@@ -56,23 +56,18 @@ public class Lavadora extends Electrodomestico {
 
 	/**
 	 * Funcion precioFinal: calcula el precio final del electrodomestico
-	 * 
-	 * @return precio final del electrodomestico
 	 */
 	@Override
-	public double precioFinal() {
+	public void precioFinal() {
 
-		// double precioFinal: precio final del producto
-		double precioFinal = super.precioFinal();
+		// Calcula el precio final sin los añadidos
+		super.precioFinal();
 
 		// If: Si la carga es mayor a 30, se incrementara el precio en 50
 		if (carga > 30) {
-			precioFinal += 50;
+			precioBase += 50;
 		} // Fin If
 
-		// Devuelve precioFinal
-		return precioFinal;
-		
 	}
 
 }
