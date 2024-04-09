@@ -1,27 +1,32 @@
 package ejercicioB1_05;
 
 /**
- * Funcion Rectangulo
+ * Funcion Triangulo
  * 
  * @author Nestor Sanchez
  */
-public class Rectangulo extends Poligono {
+public class Triangulo extends Poligono {
 
 	/**
-	 * double lado1: lado 1 del rectangulo
+	 * double lado1: lado 1 del triangulo
 	 */
 	private double lado1;
 
 	/**
-	 * double lado2: lado 2 del rectangulo
+	 * double lado2: lado 2 del triangulo
 	 */
 	private double lado2;
 
 	/**
+	 * double lado3: lado 3 del triangulo
+	 */
+	private double lado3;
+
+	/**
 	 * Constructor sin parametros
 	 */
-	public Rectangulo() {
-		super(4);
+	public Triangulo() {
+		super(3);
 	}
 
 	/**
@@ -30,8 +35,9 @@ public class Rectangulo extends Poligono {
 	 * @param numeroLados numero de lados de un poligono
 	 * @param lado1       lado 1 del rectangulo
 	 * @param lado2       lado 2 del rectangulo
+	 * @param lado3       lado 3 del rectangulo
 	 */
-	public Rectangulo(int numeroLados, double lado1, double lado2) {
+	public Triangulo(int numeroLados, double lado1, double lado2, double lado3) {
 
 		// Asigna el nº de lados
 		super(numeroLados);
@@ -45,6 +51,11 @@ public class Rectangulo extends Poligono {
 		if (lado2 > 0) {
 			this.lado2 = lado2;
 		} // Fin If 2
+
+		// If 3: asigna lado3
+		if (lado3 > 0) {
+			this.lado3 = lado3;
+		} // Fin If 3
 
 	}
 
@@ -83,13 +94,31 @@ public class Rectangulo extends Poligono {
 	public void setLado2(double lado2) {
 		this.lado2 = lado2;
 	}
+	
+	/**
+	 * Getter getLado3
+	 * 
+	 * @return lado 3 del rectangulo
+	 */
+	public double getLado3() {
+		return lado3;
+	}
 
 	/**
-	 * Funcion area: calcula el area del rectangulo
+	 * Setter setLado3
+	 * 
+	 * @param lado3 lado 3 del rectangulo
+	 */
+	public void setLado3(double lado3) {
+		this.lado3 = lado3;
+	}
+
+	/**
+	 * Funcion area: calcula el area del triangulo mediante la Formula de Heron
 	 */
 	@Override
 	public double area() {
-		double resultado = lado1 * lado2;
+		double resultado = (lado1 + lado2 + lado3) / 2;
 		return resultado;
 	}
 
@@ -102,7 +131,7 @@ public class Rectangulo extends Poligono {
 		String mensaje = "";
 		mensaje += "------------------------------------------------";
 		mensaje += "\n" + super.toString();
-		mensaje += "\nTipo de poligono: Rectangulo\nLado1: " + lado1 + "\nLado2: " + lado2 + "\n";
+		mensaje += "\nTipo de poligono: Triangulo\nLado1: " + lado1 + "\nLado2: " + lado2 + "\nLado3: " + lado3 + "\n";
 		mensaje += "------------------------------------------------";
 		return mensaje;
 	}
