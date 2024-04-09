@@ -15,17 +15,17 @@ public class Electrodomestico {
 	/**
 	 * String color: color del electrodomestico
 	 */
-	protected NombreColor color = NombreColor.blanco;
+	private NombreColor color = NombreColor.blanco;
 
 	/**
 	 * char consumo: consumo energetico del electrodomestico
 	 */
-	protected ConsumoEnergetico consumo = ConsumoEnergetico.F;
+	private ConsumoEnergetico consumo = ConsumoEnergetico.F;
 
 	/**
 	 * int peso: peso del electrodomestico
 	 */
-	protected int peso = 5;
+	private int peso = 5;
 
 	/**
 	 * Constructor sin parametros
@@ -58,12 +58,7 @@ public class Electrodomestico {
 	 * @param peso       peso del electrodomestico
 	 */
 	public Electrodomestico(double precioBase, String color, char consumo, int peso) {
-		if (precioBase >= 0) {
-			this.precioBase = precioBase;
-		}
-		if (peso >= 0) {
-			this.peso = peso;
-		}
+		this(precioBase, peso);
 
 		// Comprueba el consumo energetico
 		comprobarConsumoEnergetico(consumo);
