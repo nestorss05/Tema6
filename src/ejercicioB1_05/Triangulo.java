@@ -74,7 +74,9 @@ public class Triangulo extends Poligono {
 	 * @param lado1 lado 1 del rectangulo
 	 */
 	public void setLado1(double lado1) {
-		this.lado1 = lado1;
+		if (lado1 > 0) {
+			this.lado1 = lado1;
+		}
 	}
 
 	/**
@@ -92,9 +94,11 @@ public class Triangulo extends Poligono {
 	 * @param lado2 lado 2 del rectangulo
 	 */
 	public void setLado2(double lado2) {
-		this.lado2 = lado2;
+		if (lado2 > 0) {
+			this.lado2 = lado2;
+		}
 	}
-	
+
 	/**
 	 * Getter getLado3
 	 * 
@@ -110,7 +114,9 @@ public class Triangulo extends Poligono {
 	 * @param lado3 lado 3 del rectangulo
 	 */
 	public void setLado3(double lado3) {
-		this.lado3 = lado3;
+		if (lado3 > 0) {
+			this.lado3 = lado3;
+		}
 	}
 
 	/**
@@ -118,8 +124,19 @@ public class Triangulo extends Poligono {
 	 */
 	@Override
 	public double area() {
-		double resultado = (lado1 + lado2 + lado3) / 2;
+		
+		// Double resultado: area del triangulo
+		double resultado;
+		
+		// Double semiperimetro: semiperimetro del triangulo
+		double semiperimetro = (lado1 + lado2 + lado3) / 2;
+		
+		// Calcula el area usando la Formula de Heron
+		resultado = Math.sqrt(semiperimetro + (semiperimetro - 1) * (semiperimetro - 2) * (semiperimetro - 3));
+		
+		// Devuelve resultado
 		return resultado;
+		
 	}
 
 	/**

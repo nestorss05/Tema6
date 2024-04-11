@@ -63,7 +63,9 @@ public class Rectangulo extends Poligono {
 	 * @param lado1 lado 1 del rectangulo
 	 */
 	public void setLado1(double lado1) {
-		this.lado1 = lado1;
+		if (lado1 > 0) {
+			this.lado1 = lado1;
+		}
 	}
 
 	/**
@@ -81,7 +83,9 @@ public class Rectangulo extends Poligono {
 	 * @param lado2 lado 2 del rectangulo
 	 */
 	public void setLado2(double lado2) {
-		this.lado2 = lado2;
+		if (lado2 > 0) {
+			this.lado2 = lado2;
+		}
 	}
 
 	/**
