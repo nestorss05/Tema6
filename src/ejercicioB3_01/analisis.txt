@@ -3,9 +3,9 @@ Vehiculo
 	- modelo: String
 	- color: String
 	- matricula: String
-	? encendido: boolean (false)
-	? marcha: int (0 - pto muerto)
-	? velocidad: double (0)
+	- encendido: boolean (false)
+	- marcha: int (0 - pto muerto)
+	- velocidad: double (0.0)
 	--------------------------
 	+ parar(): void
 	+ arrancar(): void
@@ -18,9 +18,10 @@ Vehiculo
 	+ setMotor(boolean motor)
 		
 Turismo extends Vehiculo
-enum tipo {Profesional, Particular}
+	enum tipo {Profesional, Particular}
 	- nPlazas: int
 	- tipo: enum
+	+ Turismo (marca, modelo, color, matricula, nPlazas, tipo)
 	----------------------------
 	heredados:
 		+ parar()
@@ -33,6 +34,7 @@ enum tipo {Profesional, Particular}
 Camiones extends Vehiculo
 	- maxPeso: int
 	- transportaMercanciaPeligrosa: boolean
+	+ Camiones (marca, modelo, color, matricula, maxPeso, transportaMercanciaPeligrosa)
 	----------------------------
 	heredados:
 		+ parar()
@@ -44,6 +46,7 @@ Camiones extends Vehiculo
 		
 Motocicletas extends Vehiculo
 	- cilindrada: int
+	+ Motocicletas (marca, modelo, color, matricula, cilindrada)
 	----------------------------
 	+ requiereCarnet(): boolean
 	----------------------------
