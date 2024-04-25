@@ -1,12 +1,12 @@
 CuentaBancaria
  	- numeroCuenta: String
  	- saldo: double
- 	- titulares[]: Titular[3]
+ 	- titulares: Titular[3]
  	------------------------------
- 	+ ingresar(cantidad: double): void
- 	+ retirar(cantidad: double): void
- 	+ añadir(titular: Titular): void
- 	+ borrar(titular: Titular): void
+ 	+ ingresar(cantidad: double): boolean
+ 	+ retirar(cantidad: double): boolean
+ 	+ añadir(titular: Titular): boolean
+ 	+ borrar(titular: Titular): boolean
  	+ CuentaBancaria(numeroCuenta, saldo, titulares)
  	------------------------------
 	+ abstract calcularSaldoConInteres(): double
@@ -17,36 +17,41 @@ CuentaBancaria
   	------------------------------
   	+ calcularSaldoConInteres(): double
    	+ CuentaAhorro(numeroCuenta, saldo, titulares, cuotaMantenimiento, interesAnual)
+  	+ aplicaInteres()
+  	+ aplicaMantenimiento()
   	------------------------------
   	Heredados
-  	+ ingresar(cantidad: double): void
- 	+ retirar(cantidad: double): void
- 	+ añadir(titular: Titular): void
- 	+ borrar(titular: Titular): void
+  	+ ingresar(cantidad: double): boolean
+ 	+ retirar(cantidad: double): boolean
+ 	+ añadir(titular: Titular): boolean
+ 	+ borrar(titular: Titular): boolean
  	
  CuentaCorriente extends CuentaBancaria
- 	- porcentajePorTransaccion: double
- 	- nTransacciones: int
- 	- transacciones[]: Transaccion
+ 	- transacciones: List<Transaccion>
   	------------------------------
   	+ realizarTransaccion(transaccion Transaccion): double
   	+ CuentaBancaria(numeroCuenta, saldo, titulares, porcentajePorTransaccion, nTransacciones, transacciones)
   	------------------------------
   	Heredados
-  	+ ingresar(cantidad: double): void
- 	+ retirar(cantidad: double): void
- 	+ añadir(titular: Titular): void
- 	+ borrar(titular: Titular): void
+  	+ ingresar(cantidad: double): boolean
+ 	+ retirar(cantidad: double): boolean
+ 	+ añadir(titular: Titular): boolean
+ 	+ borrar(titular: Titular): boolean
   	
  Titular
  	- dni: String
  	- nombre: String
  	- apellidos: String
  	- telefono: int
+ 	+ Titular(DNI, nombre, apellidos, telefono)
+	+ equals(Object o): boolean (@Override)
  	
  Transaccion
+ 	enum TipoMovimiento (BIZUM, RECIBOS, TRANSFERENCIAS, IMPUESTOS)
+ 	- porcentaje: double
  	- dia: int
  	- mes: int
  	- anio: int
  	- concepto: String
  	- importe: double
+ 	- tipo: TipoMovimiento
