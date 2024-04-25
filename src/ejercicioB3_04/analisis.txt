@@ -1,0 +1,27 @@
+Contacto
+	- nombre: String
+	- telefono: int
+ 	------------------------------
+ 	+ Contacto(nombre, telefono)
+	+ @override equals()
+	------------------------------
+	+ getNombre(): String
+    + getTelefono(): String
+    + setNombre(String nombre): void
+    + setTelefono(int telefono): void
+	
+Persona extends Contacto
+	- cumpleaños: String
+ 	------------------------------
+ 	+ Persona(nombre, telefono, cumpleaños)
+ 	------------------------------
+	+ getCumpleaños(): String
+    + setCumpleaños(String cumpleaños): void
+	
+Empresa extends Contacto
+	- paginaWeb: String
+ 	------------------------------
+	+ Empresa(nombre, telefono, paginaWeb)
+	------------------------------
+	+ getPaginaWeb(): String
+    + setPaginaWeb(String paginaWeb): void

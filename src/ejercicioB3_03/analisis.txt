@@ -1,0 +1,52 @@
+CuentaBancaria
+ 	- numeroCuenta: String
+ 	- saldo: double
+ 	- titulares[]: Titular[3]
+ 	------------------------------
+ 	+ ingresar(cantidad: double): void
+ 	+ retirar(cantidad: double): void
+ 	+ añadir(titular: Titular): void
+ 	+ borrar(titular: Titular): void
+ 	+ CuentaBancaria(numeroCuenta, saldo, titulares)
+ 	------------------------------
+	+ abstract calcularSaldoConInteres(): double
+ 	
+ CuentaAhorro extends CuentaBancaria
+ 	- cuotaMantenimiento: double
+ 	- interesAnual: double
+  	------------------------------
+  	+ calcularSaldoConInteres(): double
+   	+ CuentaAhorro(numeroCuenta, saldo, titulares, cuotaMantenimiento, interesAnual)
+  	------------------------------
+  	Heredados
+  	+ ingresar(cantidad: double): void
+ 	+ retirar(cantidad: double): void
+ 	+ añadir(titular: Titular): void
+ 	+ borrar(titular: Titular): void
+ 	
+ CuentaCorriente extends CuentaBancaria
+ 	- porcentajePorTransaccion: double
+ 	- nTransacciones: int
+ 	- transacciones[]: Transaccion
+  	------------------------------
+  	+ realizarTransaccion(transaccion Transaccion): double
+  	+ CuentaBancaria(numeroCuenta, saldo, titulares, porcentajePorTransaccion, nTransacciones, transacciones)
+  	------------------------------
+  	Heredados
+  	+ ingresar(cantidad: double): void
+ 	+ retirar(cantidad: double): void
+ 	+ añadir(titular: Titular): void
+ 	+ borrar(titular: Titular): void
+  	
+ Titular
+ 	- dni: String
+ 	- nombre: String
+ 	- apellidos: String
+ 	- telefono: int
+ 	
+ Transaccion
+ 	- dia: int
+ 	- mes: int
+ 	- anio: int
+ 	- concepto: String
+ 	- importe: double
